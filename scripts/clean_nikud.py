@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 INPUT_FILE = BASE_DIR / "data" / "tanach.json"
 OUTPUT_FILE = BASE_DIR / "data" / "tanach_clean.json"
 
+
 HTML_TAG_RE = re.compile(r"<[^>]+>")
 PARASHA_RE = re.compile(r"\{[פס]\}")
 SOF_PASUQ_RE = re.compile(r"[׃]")
