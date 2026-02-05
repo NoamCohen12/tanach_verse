@@ -24,7 +24,7 @@ FAKE_VERSES = [
         "book": "Psalms",
         "chapter": 23,
         "verse": 1,
-        "text": "מִזְמוֹר לְדָוִד"
+        "text": "מִזְמוֹר לְדָוִד ברא"
     },
     {
         "book": "Psalms",
@@ -68,4 +68,19 @@ def test_find_limit():
     finder = VerseFinder(FAKE_VERSES)
 
     results = finder.find("ברא", limit=1)
+    assert len(results) == 1
+
+
+def test_find_contains_strips_niqqud1():
+    finder = VerseFinder(FAKE_VERSES)
+
+    results = finder.find_contains("ברא")
+    texts = [v["text"] for v in results]
+    assert len(results) == 2
+    assert any("ברא" in t for t in texts)
+
+
+def test_find_contains_strips_niqqud2():
+    finder = VerseFinder(FAKE_VERSES)
+    results = finder.find_contains("דוד")
     assert len(results) == 1
