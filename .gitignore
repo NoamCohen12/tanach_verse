@@ -1,2 +1,6 @@
 .env
 adapters/users.json
+__pycache__/
+*.pyc
+.git
+.gitignore

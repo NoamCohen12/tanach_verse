@@ -51,14 +51,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # ⬅️ בדיקה: האם זו הפעם הראשונה
     if not context.user_data.get("intro_shown"):
         intro = (
-            "ברוך הבא 👋<br><br>"
-            "אפשר לחפש פסוקים בשתי דרכים:<br><br>"
-            "לפי האות הראשונה והאחרונה של השם 🔤<br>"
-            "פסוק שמכיל את השם עצמו 🔎<br><br>"
-            "פותח על ידי: נועם כהן 👨‍💻<br><br>"
-            "<a href='https://www.linkedin.com/in/noam-cohen-a7802b275/'>"
-            "Noam Cohen | LinkedIn</a><br>"
-            "נתוני הפסוקים באדיבות Sefaria.org 📚<br><br> "
+            "ברוך הבא 👋\n\n"
+            "אפשר לחפש פסוקים בשתי דרכים:\n\n"
+            "לפי האות הראשונה והאחרונה של השם 🔤\n"
+            "פסוק שמכיל את השם עצמו 🔎\n\n"
+            "פותח על ידי: נועם כהן 👨‍💻\n\n"
+            "[Noam Cohen | LinkedIn]"
+            "(https://www.linkedin.com/in/noam-cohen-a7802b275/)\n"
+            "נתוני הפסוקים באדיבות Sefaria.org 📚\n\n> "
             "בחר איך תרצה לחפש:"
         )
 
@@ -71,7 +71,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(
             intro,
             reply_markup=InlineKeyboardMarkup(keyboard),
-            parse_mode="HTML"
+            parse_mode="Markdown"
         )
 
         context.user_data["intro_shown"] = True
