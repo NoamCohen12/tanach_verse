@@ -14,6 +14,15 @@ MODE_CONTAINS = "contains"
 MODE_TOGETHER = "together"
 MODE_CHANGE = "change_mode"
 
+FOOTER = (
+    "\n\n—\n"
+    "פותח על ידי: נועם כהן 👨‍💻\n"
+    "רעיונות, הערות או הצעות לשיפור — מוזמנים להתחבר 🙂\n"
+    "[LinkedIn](https://www.linkedin.com/in/noam-cohen-a7802b275/)"
+)
+
+
+
 load_dotenv()
 
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
@@ -128,7 +137,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         reply = "\n\n".join(parts)
 
-        await send_long_message(update.message, reply)
+        await send_long_message(update.message, reply+ FOOTER)
         await show_change_button(update.message)
         return
 
@@ -153,7 +162,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     reply = f"מצאתי {len(lines)} פסוקים מתאימים:\n\n" + "\n\n".join(lines)
 
-    await send_long_message(update.message, reply)
+    await send_long_message(update.message, reply+ FOOTER)
     await show_change_button(update.message)
 
 
