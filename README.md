@@ -7,50 +7,106 @@ A professional Telegram bot designed to help users find biblical verses () based
 ## 🌟 Overview
 In Jewish tradition, it is common to recite a verse at the end of the 'Amidah' prayer that starts with the first letter of one's name and ends with the last. This bot automates that search and offers additional ways to find verses connected to a person's name.
 
+---
+
 ## ✨ Key Features
-* **🔤 Edge Matching:** Finds verses starting with the first letter and ending with the last letter of a name.
-* **🔎 Name Inclusion:** Finds verses where the specific name appears within the text.
-* **🔄 Hybrid Mode:** Performs both searches simultaneously for maximum results.
-* **📊 Admin Dashboard:** Built-in analytics to track unique user engagement.
-* **📜 Smart Pagination:** Handles long biblical texts by splitting them into multiple messages to avoid Telegram's character limits.
+
+- 🔤 **Edge Matching** – Finds verses starting with the first letter and ending with the last letter of a given name.
+- 🔎 **Name Inclusion** – Finds verses where a specific name appears inside the text.
+- 🔄 **Hybrid Mode** – Combines both search strategies for maximum coverage.
+- 📜 **Smart Pagination** – Automatically splits long verses into multiple Telegram messages to respect character limits.
+- 📊 **Admin Analytics** – Tracks unique users and engagement statistics.
+- 🧪 **Tested Core Logic** – Unit tests ensure correctness and maintainability.
+- 🐳 **Dockerized** – Fully containerized for consistent environments.
+- ☁️ **Cloud Deployed** – Running in production on Railway.
+
+---
 
 ## 🛠 Tech Stack
-* **Language:** Python 3.10+
-* **Framework:** [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot) (Asynchronous)
-* **Configuration:** `python-dotenv`
-* **Data Source:** Integration with Sefaria's biblical database.
 
-## ⚙️ Installation & Setup
+- **Language:** Python 3.10+
+- **Bot Framework:** python-telegram-bot (async, v20+)
+- **Configuration:** python-dotenv
+- **Testing:** pytest
+- **Containerization:** Docker
+- **Deployment:** Railway
+- **Data Source:** Sefaria biblical database
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/your-username/verse-finder-bot.git](https://github.com/your-username/verse-finder-bot.git)
-   cd verse-finder-bot
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/NoamCohen12/tanach-verse.git
+cd tanach_verse
+```
 Install dependencies:
 
-Bash
+```bash
 pip install -r requirements.txt
-Set up Environment Variables: Create a .env file in the root directory:
+```
 
-Configuration: The bot requires environment variables to run.
+## 🔐 Environment Variables
 
-Use the template provided in env_example to create your own .env file.
+Create a `.env` file in the root directory:
 
-Fill in your Telegram Bot Token and Admin ID inside the .env file.
+```
+BOT_TOKEN=your_telegram_bot_token
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+```
 
-Run the application:
+You can use `.env.example` as a template.
 
-Bash
-python main.py
-📂 Project Structure
-main.py: Entry point and Telegram bot handlers.
+---
 
-core/finder.py: Logic for searching and filtering verses.
 
-analytics/users.py: User tracking and statistics.
+## ▶️ Running the Telegram Bot
 
-env_example: Template for environment variables.
+```bash
+python adapters/telegram_bot.py
+```
 
+---
+## 📁 Project Structure
+
+```
+tanach_verse/
+│
+├── adapters/
+│   ├── flask_app.py          # Flask HTTP API interface
+│   ├── telegram_bot.py       # Telegram bot entry & handlers
+│   └── users.json            # Local user storage (analytics)
+│
+├── analytics/
+│   └── users.py              # User tracking logic
+│
+├── core/
+│   ├── finder.py             # Verse search engine
+│   └── hebrew.py             # Hebrew normalization utilities
+│
+├── data/
+│   ├── tanach.json           # Raw Tanach dataset
+│   └── tanach_clean.json     # Processed dataset (niqqud removed)
+│
+├── scripts/
+│   ├── clean_nikud.py        # Removes niqqud from dataset
+│   ├── download_tanach.py    # Dataset downloader
+│   └── hebraize_tanach_data.py
+│
+├── tests/
+│   ├── test_finder.py
+│   ├── test_hebraize.py
+│   └── test_hebrew.py
+│
+├── .env
+├── .env.example
+├── Dockerfile
+└── README.md
+```
+
+---
 👨‍💻 Developed By
 Noam Cohen
 
