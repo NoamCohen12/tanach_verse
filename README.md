@@ -18,7 +18,7 @@ In Jewish tradition, it is common to recite a verse at the end of the 'Amidah' p
 - 📊 **Admin Analytics** – Tracks unique users and engagement statistics.
 - 🧪 **Tested Core Logic** – Unit tests ensure correctness and maintainability.
 - 🐳 **Dockerized** – Fully containerized for consistent environments.
-- ☁️ **Cloud Deployed** – Running in production on Railway.
+- ☁️ **Cloud Deployed** – Running in production on Render.
 
 ---
 
@@ -29,7 +29,7 @@ In Jewish tradition, it is common to recite a verse at the end of the 'Amidah' p
 - **Configuration:** python-dotenv
 - **Testing:** pytest
 - **Containerization:** Docker
-- **Deployment:** Railway
+- **Deployment:** Render
 - **Data Source:** Sefaria biblical database
 
 ---
