@@ -1,4 +1,6 @@
 import os
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, MessageHandler, CommandHandler, CallbackQueryHandler, ContextTypes, filters
@@ -233,7 +235,23 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
+def run_health_server():
+    port = int(os.environ.get("PORT", 8080))
+
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b"OK")
+
+        def log_message(self, *args):
+            pass
+
+    HTTPServer(("0.0.0.0", port), Handler).serve_forever()
+
+
 def main():
+    threading.Thread(target=run_health_server, daemon=True).start()
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("stats", stats))
