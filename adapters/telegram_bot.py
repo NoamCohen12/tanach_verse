@@ -252,6 +252,8 @@ def run_health_server():
 
 def main():
     threading.Thread(target=run_health_server, daemon=True).start()
+    import time
+    time.sleep(5)
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("stats", stats))
